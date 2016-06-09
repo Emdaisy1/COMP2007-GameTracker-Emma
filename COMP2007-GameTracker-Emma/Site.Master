@@ -31,8 +31,9 @@ Description: Master page for the website pages, running the nav bar and the foot
 <body>
     <form id="form1" runat="server">
 
-        <%--    Will run one navbar if user is NOT logged in, another if they are
-    <bs3:NavbarLoggedIn runat="server"></bs3:NavbarLoggedIn>--%>
+        <%--    Will run one navbar if user is NOT logged in, another if they are --%>
+        <bs3:NavbarLoggedIn runat="server"></bs3:NavbarLoggedIn>
+        <bs3:GenNav runat="server"></bs3:GenNav>
 
         <div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
