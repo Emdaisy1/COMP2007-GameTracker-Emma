@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace COMP2007_GameTracker_Emma
 {
-    public partial class Contact : System.Web.UI.Page
+    public partial class Profile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void SubmitButton_Click(object sender, EventArgs e)
-        {
-            //Typically replaced with code to process emails
-            Response.Redirect("Default.aspx");
         }
     }
 }

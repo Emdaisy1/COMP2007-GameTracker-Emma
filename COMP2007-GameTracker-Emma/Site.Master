@@ -1,6 +1,12 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COMP2007_GameTracker_Emma.Site" %>
+﻿<%--Author: Emma Hilborn - 200282755
+Date: June 6, 2016
+Version: 1.0.0
+Description: Master page for the website pages, running the nav bar and the footer--%>
 
-<%@ Register Src="~/User_Controls/Navbar.ascx" TagName="Navbar" TagPrefix="bs3" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COMP2007_GameTracker_Emma.Site" %>
+
+<%@ Register Src="~/User_Controls/NavbarLoggedIn.ascx" TagName="NavbarLoggedIn" TagPrefix="bs3" %>
+<%@ Register Src="~/User_Controls/GeneralNav.ascx" TagName="GenNav" TagPrefix="bs3" %>
 
 <!DOCTYPE html>
 
@@ -24,14 +30,20 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    
-    <bs3:Navbar runat="server"></bs3:Navbar>
 
-    <div>
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+        <%--    Will run one navbar if user is NOT logged in, another if they are
+    <bs3:NavbarLoggedIn runat="server"></bs3:NavbarLoggedIn>--%>
+
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">&copy; Game for the Top</p>
+            </div>
+        </footer>
     </form>
 
     <!-- JavaScript -->

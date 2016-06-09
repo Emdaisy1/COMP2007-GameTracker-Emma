@@ -1,4 +1,10 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navbar.ascx.cs" Inherits="COMP2007_GameTracker_Emma.Navbar" %>
+﻿<%--Author: Emma Hilborn - 200282755
+Date: June 6, 2016
+Version: 1.0.0
+Description: User control for the nav bar that will be shown to users who are not logged in--%>
+
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GeneralNav.ascx.cs" Inherits="COMP2007_GameTracker_Emma.User_Controls.GeneralNav" %>
+
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,7 +21,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li id="home" runat="server"><a href="Default.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
-                <li id="contact" runat="server"><a href="Contact.aspx"><i class="fa fa-phone fa-lg"></i> Contact Us</a></li>
+                <li id="login" runat="server"><a href="Login.aspx"><i class="fa fa-phone fa-lg"></i> Login</a></li>
+                <li id="register" runat="server"><a href="Register.aspx"><i class="fa fa-phone fa-lg"></i> Register</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

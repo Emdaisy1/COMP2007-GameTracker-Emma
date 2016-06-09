@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace COMP2007_GameTracker_Emma.User_Controls
 {
-    public partial class Jumbotron : System.Web.UI.UserControl
+    public partial class GeneralNav : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            JumbotronH1.InnerText = "Welcome to my Site!";
+
         }
     }
 }
