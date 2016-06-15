@@ -11,5 +11,23 @@ namespace COMP2007_GameTracker_Emma {
     
     
     public partial class Default {
+        
+        /// <summary>
+        /// GamesGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GamesGridView;
+        
+        /// <summary>
+        /// TeamsGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView TeamsGridView;
     }
 }

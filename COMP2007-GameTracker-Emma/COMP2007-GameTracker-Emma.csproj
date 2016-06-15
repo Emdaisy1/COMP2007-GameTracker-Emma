@@ -47,11 +47,21 @@
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.2.2.3\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -71,11 +81,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
+    <Content Include="Models\GameTrackerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GameTrackerModel.edmx</DependentUpon>
+      <LastGenOutput>GameTrackerModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GameTrackerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GameTrackerModel.edmx</DependentUpon>
+      <LastGenOutput>GameTrackerModel.cs</LastGenOutput>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
+    <EntityDeploy Include="Models\GameTrackerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GameTrackerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GameTrackerModel.edmx.diagram">
+      <DependentUpon>GameTrackerModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -132,6 +159,27 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\GamesTable.cs">
+      <DependentUpon>GameTrackerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameTrackerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GameTrackerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameTrackerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GameTrackerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameTrackerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GameTrackerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamTable.cs">
+      <DependentUpon>GameTrackerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,6 +215,9 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
