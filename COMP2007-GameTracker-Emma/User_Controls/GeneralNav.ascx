@@ -15,7 +15,7 @@ Description: User control for the nav bar that will be shown to users who are no
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="Default.aspx"><i class="fa fa-trophy fa-lg"></i> Game for the Top</a>
+            <img src="../Images/logoSmall.png" alt="Logo" /><a class="navbar-brand" href="Default.aspx"> Game for the Top</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

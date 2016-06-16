@@ -7,7 +7,9 @@ Description: Main page which will display game stats AND team stats to user - lo
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="mainTitle">
-        <h1>Game for the Top</h1>
+        <h1>
+            <img src="Images/logo.png" alt="Logo" />
+            Game for the Top</h1>
     </div>
     <div class="subTitle">
         <h2>Volleyball Games this Week</h2>
@@ -39,14 +41,19 @@ Description: Main page which will display game stats AND team stats to user - lo
             </div>
         </div>
     </div>
-    <h2>Teams</h2>
-
-    <asp:GridView runat="server" ID="TeamsGridView" AutoGenerateColumns="false"
-        CssClass="table table-striped table-bordered table-hover">
-        <Columns>
-            <asp:BoundField DataField="TeamName" HeaderText="Team Name" Visible="true" />
-            <asp:BoundField DataField="TeamDescription" HeaderText="Slogan" Visible="true" />
-        </Columns>
-    </asp:GridView>
+    <div class="col col-md-8 col-md-offset-2">
+        <div class="panel panel-warning">
+            <div class="panel-heading">Teams</div>
+            <div class="panel-body">
+                <asp:GridView runat="server" ID="TeamsGridView" AutoGenerateColumns="false"
+                    CssClass="table table-striped table-bordered table-hover">
+                    <Columns>
+                        <asp:BoundField DataField="TeamName" HeaderText="Team Name" Visible="true" />
+                        <asp:BoundField DataField="TeamDescription" HeaderText="Slogan" Visible="true" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
 
 </asp:Content>
