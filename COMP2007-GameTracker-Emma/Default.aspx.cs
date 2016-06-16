@@ -30,6 +30,7 @@ namespace COMP2007_GameTracker_Emma
         {
             
             int weekNum = 24;
+            bool loggedIn = true;
 
             SqlCommand getGames = new SqlCommand("SELECT *, (TeamOnePoints+TeamTwoPoints) AS TotalPoints FROM GamesTable WHERE Week = @Week", db);
             getGames.Parameters.AddWithValue("@Week", weekNum);
@@ -105,16 +106,6 @@ namespace COMP2007_GameTracker_Emma
 
             GamesGridView.DataSource = gamesData.DefaultView;
             GamesGridView.DataBind();
-
-            /*
-            var Games = (from allGames in db.GamesTables
-                         where allGames.Week == weekNum
-                         select allGames);
-
-            GamesGridView.DataSource = Games.AsQueryable().ToList();
-            GamesGridView.DataBind();
-            */
-
 
         }
 
