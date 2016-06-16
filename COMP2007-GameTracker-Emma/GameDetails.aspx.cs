@@ -62,5 +62,50 @@ namespace COMP2007_GameTracker_Emma
                 }
             }
         }
+
+        protected void SaveButton_Click(object sender, EventArgs e)
+        {
+            int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
+            bool isValid = true;
+
+            if (TeamOneDropDown.SelectedValue == TeamTwoDropDown.SelectedValue)
+            {
+                isValid = false;
+            }
+
+
+            if (isValid == false)
+            {
+
+                using (DefaultConnection db = new DefaultConnection())
+                {
+                    // use the student model to save a new record
+                    GamesTable updatedGameSave = new GamesTable();
+
+
+                    updatedGameSave = (from game in db.GamesTables
+                                       where game.GameID == GameID
+                                       select game).FirstOrDefault();
+
+                    updatedGameSave.TeamOneID = Convert.ToInt32(TeamOneDropDown.SelectedValue);
+                    updatedGameSave.TeamTwoID = Convert.ToInt32(TeamTwoDropDown.SelectedValue);
+                    updatedGameSave.TeamOnePoints = Convert.ToInt32(TeamOnePointsTextBox.Text);
+                    updatedGameSave.TeamTwoPoints = Convert.ToInt32(TeamTwoPointsTextBox.Text);
+
+
+
+                    // run insert in DB
+                    db.SaveChanges();
+
+                    // redirect to the updated students page
+                    Response.Redirect("~/Default.aspx");
+                }
+            }
+        }
+
+        protected void CancelButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }

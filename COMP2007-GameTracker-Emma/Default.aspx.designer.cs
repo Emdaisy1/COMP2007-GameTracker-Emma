@@ -13,6 +13,15 @@ namespace COMP2007_GameTracker_Emma {
     public partial class Default {
         
         /// <summary>
+        /// WeekDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList WeekDropDown;
+        
+        /// <summary>
         /// GamesGridView control.
         /// </summary>
         /// <remarks>

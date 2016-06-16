@@ -17,29 +17,32 @@
                 <h6>All fields are required.</h6>
                 <br />
                 <div class="form-group">
-                    <label class="control-label" for="LastNameTextBox">Team One</label>
+                    <label class="control-label" for="TeamOneDropDown">Team One</label>
                     <asp:DropDownList ID="TeamOneDropDown" runat="server"></asp:DropDownList>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="LastNameTextBox">Team Two</label>
+                    <label class="control-label" for="TeamTwoDropDown">Team Two</label>
                     <asp:DropDownList ID="TeamTwoDropDown" runat="server"></asp:DropDownList>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="TeamOnePointsTextBox">Team One Points</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="TeamOnePointsTextBox" placeholder="Team One Points" required="true" MaxLength="2"></asp:TextBox>
+                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="40" ControlToValidate="TeamOnePointsTextBox" ErrorMessage="Please enter a valid number from 1-40!" />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="TeamTwoPointsTextBox">Team Two Points</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="TeamTwoPointsTextBox" placeholder="Team Two Points" required="true" MaxLength="2"></asp:TextBox>
+                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="40" ControlToValidate="TeamTwoPointsTextBox" ErrorMessage="Please enter a valid number from 1-40!" />
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="SpectatorsTextBox">Spectators</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="SpectatorsTextBox" placeholder="Spectators" required="true" MaxLength="3"></asp:TextBox>
+                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="999" ControlToValidate="SpectatorsTextBox" ErrorMessage="Please enter a valid number from 1-999!" />
                 </div>
-                <%--        <div class="text-right">
-            <asp:Button Text="Cancel" ID="CancelButton" runat="server" CssClass="btn btn-warning btn-lg" UseSubmitBehavior="false" CausesValidation="false" OnClick="CancelButton_Click" />
-            <asp:Button Text="Save" ID="SaveButton" runat="server" CssClass="btn btn-primary btn-lg" OnClick="SaveButton_Click" />
-        </div>--%>
+                <div class="text-right">
+                    <asp:Button Text="Cancel" ID="CancelButton" runat="server" CssClass="btn btn-warning btn-lg" UseSubmitBehavior="false" CausesValidation="false" OnClick="CancelButton_Click" />
+                    <asp:Button Text="Save" ID="SaveButton" runat="server" CssClass="btn btn-primary btn-lg" OnClick="SaveButton_Click" />
+                </div>
             </div>
         </div>
     </div>

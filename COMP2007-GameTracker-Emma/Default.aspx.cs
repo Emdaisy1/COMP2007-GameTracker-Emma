@@ -23,6 +23,7 @@ namespace COMP2007_GameTracker_Emma
             {
                 this.GetGames();
                 this.GetTeams();
+                this.GetWeeks();
             }
         }
 
@@ -117,6 +118,15 @@ namespace COMP2007_GameTracker_Emma
             TeamsGridView.DataSource = Teams.AsQueryable().ToList();
             TeamsGridView.DataBind();
             */
+        }
+
+        protected void GetWeeks()
+        {
+            for(int week = 1; week <= 52; week++)
+            {
+                ListItem newWeek = new ListItem(week.ToString(), week.ToString());
+                WeekDropDown.Items.Add(newWeek);
+            }
         }
     }
 }

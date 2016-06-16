@@ -56,5 +56,23 @@ namespace COMP2007_GameTracker_Emma {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SpectatorsTextBox;
+        
+        /// <summary>
+        /// CancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelButton;
+        
+        /// <summary>
+        /// SaveButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SaveButton;
     }
 }
