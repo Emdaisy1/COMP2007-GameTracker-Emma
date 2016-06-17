@@ -16,6 +16,7 @@ namespace COMP2007_GameTracker_Emma
         SqlConnection db = new SqlConnection("user id = EmmaH; data source = comp2007emma.database.windows.net; initial catalog = comp2007emma; persist security info = True; user id = EmmaH; password = Emma1031");
         SqlDataReader reader;
         DataTable gamesData = new DataTable();
+        DataTable teamsData = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -115,13 +116,84 @@ namespace COMP2007_GameTracker_Emma
         }
 
         protected void GetTeams()
-        { 
-            /*
-             * var Teams = (from allTeams in db.TeamTables
-                         select allTeams);
-            TeamsGridView.DataSource = Teams.AsQueryable().ToList();
+        {
+            SqlCommand getTeams = new SqlCommand("SELECT * FROM TeamTable", db);
+            db.Open();
+            reader = getTeams.ExecuteReader();
+            teamsData.Load(reader);
+            db.Close();
+
+            teamsData.Columns.Add(new DataColumn("GameOneScores", typeof(string)));
+            teamsData.Columns.Add(new DataColumn("GameTwoScores", typeof(string)));
+            teamsData.Columns.Add(new DataColumn("GameThreeScores", typeof(string)));
+            teamsData.Columns.Add(new DataColumn("GameFourScores", typeof(string)));
+
+            foreach (DataRow teamsRow in teamsData.Rows)
+            {
+                foreach (DataRow gameRow in gamesData.Rows)
+                {
+                    if (teamsRow["TeamID"].ToString() != gameRow["TeamOneID"].ToString() && teamsRow["TeamID"].ToString() != gameRow["TeamTwoID"].ToString())
+                    {
+                        if (gameRow["GameNum"].ToString() == "Game #1")
+                        {
+                            teamsRow["GameOneScores"] = "N/A";
+                        }
+                        else if (gameRow["GameNum"].ToString() == "Game #2")
+                        {
+                            teamsRow["GameTwoScores"] = "N/A";
+                        }
+                        else if (gameRow["GameNum"].ToString() == "Game #3")
+                        {
+                            teamsRow["GameThreeScores"] = "N/A";
+                        }
+                        else
+                        {
+                            teamsRow["GameFourScores"] = "N/A";
+                        }
+                    }
+                    else if(teamsRow["TeamID"].ToString() == gameRow["TeamOneID"].ToString())
+                    {
+                        if (gameRow["GameNum"].ToString() == "Game #1")
+                        {
+                            teamsRow["GameOneScores"] = "Won " + gameRow["TeamOnePoints"] + " / Lost " + gameRow["TeamTwoPoints"];
+                        }
+                        else if (gameRow["GameNum"].ToString() == "Game #2")
+                        {
+                            teamsRow["GameTwoScores"] = "Won " + gameRow["TeamOnePoints"] + " / Lost " + gameRow["TeamTwoPoints"];
+                        }
+                        else if (gameRow["GameNum"].ToString() == "Game #3")
+                        {
+                            teamsRow["GameThreeScores"] = "Won " + gameRow["TeamOnePoints"] + " / Lost " + gameRow["TeamTwoPoints"];
+                        }
+                        else
+                        {
+                            teamsRow["GameFourScores"] = "Won " + gameRow["TeamOnePoints"] + " / Lost " + gameRow["TeamTwoPoints"];
+                        }
+                    }
+                    else
+                    {
+                        if (gameRow["GameNum"].ToString() == "Game #1")
+                        {
+                            teamsRow["GameOneScores"] = "Won " + gameRow["TeamTwoPoints"] + " / Lost " + gameRow["TeamOnePoints"];
+                        }
+                        else if (gameRow["GameNum"].ToString() == "Game #2")
+                        {
+                            teamsRow["GameTwoScores"] = "Won " + gameRow["TeamTwoPoints"] + " / Lost " + gameRow["TeamOnePoints"];
+                        }
+                        else if (gameRow["GameNum"].ToString() == "Game #3")
+                        {
+                            teamsRow["GameThreeScores"] = "Won " + gameRow["TeamTwoPoints"] + " / Lost " + gameRow["TeamOnePoints"];
+                        }
+                        else
+                        {
+                            teamsRow["GameFourScores"] = "Won " + gameRow["TeamTwoPoints"] + " / Lost " + gameRow["TeamOnePoints"];
+                        }
+                    }
+                }
+            }
+
+            TeamsGridView.DataSource = teamsData.DefaultView;
             TeamsGridView.DataBind();
-            */
         }
 
         protected void GetWeeks()
