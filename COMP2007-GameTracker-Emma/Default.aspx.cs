@@ -88,6 +88,10 @@ namespace COMP2007_GameTracker_Emma
 
                 if (Int32.Parse(row["Winner"].ToString()) == 0)
                 {
+                    row["GameWinner"] = "";
+                }
+                else if(Int32.Parse(row["Winner"].ToString()) == 5)
+                {
                     row["GameWinner"] = "Tie";
                 }
                 else

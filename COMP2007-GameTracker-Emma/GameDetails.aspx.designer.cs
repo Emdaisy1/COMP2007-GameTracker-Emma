@@ -13,6 +13,15 @@ namespace COMP2007_GameTracker_Emma {
     public partial class GameDetails {
         
         /// <summary>
+        /// DescriptionTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DescriptionTextBox;
+        
+        /// <summary>
         /// TeamOneDropDown control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace COMP2007_GameTracker_Emma {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList TeamTwoDropDown;
+        
+        /// <summary>
+        /// errorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorMessage;
         
         /// <summary>
         /// TeamOnePointsTextBox control.

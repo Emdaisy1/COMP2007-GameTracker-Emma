@@ -50,6 +50,10 @@ Description: Main page which will display game stats AND team stats to user - lo
                     <Columns>
                         <asp:BoundField DataField="TeamName" HeaderText="Team Name" Visible="true" />
                         <asp:BoundField DataField="TeamDescription" HeaderText="Slogan" Visible="true" />
+                        <asp:BoundField DataField="GameOneScores" HeaderText="Game #1 Scores" Visible="true" />
+                        <asp:BoundField DataField="GameTwoScores" HeaderText="Game #2 Scores" Visible="true" />
+                        <asp:BoundField DataField="GameThreeScores" HeaderText="Game #3 Scores" Visible="true" />
+                        <asp:BoundField DataField="GameFourScores" HeaderText="Game #4 Scores" Visible="true" />
                     </Columns>
                 </asp:GridView>
             </div>

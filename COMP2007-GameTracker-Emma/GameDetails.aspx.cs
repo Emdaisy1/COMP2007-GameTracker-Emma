@@ -19,8 +19,13 @@ namespace COMP2007_GameTracker_Emma
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.FillDropdowns();
-            this.GetGame();
+            if (!IsPostBack)
+            {
+                this.FillDropdowns();
+                this.GetGame();
+            }
+            errorMessage.Text = "";
+
         }
 
         protected void FillDropdowns()
@@ -66,46 +71,61 @@ namespace COMP2007_GameTracker_Emma
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
-            bool isValid = true;
 
-            if (TeamOneDropDown.SelectedValue == TeamTwoDropDown.SelectedValue)
+            using (DefaultConnection db = new DefaultConnection())
             {
-                isValid = false;
-            }
+                // use the student model to save a new record
+                GamesTable updatedGameSave = new GamesTable();
 
 
-            if (isValid == false)
-            {
+                updatedGameSave = (from game in db.GamesTables
+                                   where game.GameID == GameID
+                                   select game).FirstOrDefault();
 
-                using (DefaultConnection db = new DefaultConnection())
+                updatedGameSave.Description = DescriptionTextBox.Text;
+                updatedGameSave.TeamOneID = Convert.ToInt32(TeamOneDropDown.SelectedValue);
+                updatedGameSave.TeamTwoID = Convert.ToInt32(TeamTwoDropDown.SelectedValue);
+                updatedGameSave.TeamOnePoints = Convert.ToInt32(TeamOnePointsTextBox.Text);
+                updatedGameSave.TeamTwoPoints = Convert.ToInt32(TeamTwoPointsTextBox.Text);
+                updatedGameSave.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
+
+                if(TeamOnePointsTextBox.Text == TeamTwoPointsTextBox.Text)
                 {
-                    // use the student model to save a new record
-                    GamesTable updatedGameSave = new GamesTable();
-
-
-                    updatedGameSave = (from game in db.GamesTables
-                                       where game.GameID == GameID
-                                       select game).FirstOrDefault();
-
-                    updatedGameSave.TeamOneID = Convert.ToInt32(TeamOneDropDown.SelectedValue);
-                    updatedGameSave.TeamTwoID = Convert.ToInt32(TeamTwoDropDown.SelectedValue);
-                    updatedGameSave.TeamOnePoints = Convert.ToInt32(TeamOnePointsTextBox.Text);
-                    updatedGameSave.TeamTwoPoints = Convert.ToInt32(TeamTwoPointsTextBox.Text);
-
-
-
-                    // run insert in DB
-                    db.SaveChanges();
-
-                    // redirect to the updated students page
-                    Response.Redirect("~/Default.aspx");
+                    updatedGameSave.Winner = 5;
                 }
+                else if(Convert.ToInt32(TeamOnePointsTextBox.Text) > Convert.ToInt32(TeamTwoPointsTextBox.Text))
+                {
+                    updatedGameSave.Winner = Convert.ToInt32(TeamOneDropDown.SelectedValue);
+                }
+                else
+                {
+                    updatedGameSave.Winner = Convert.ToInt32(TeamTwoDropDown.SelectedValue);
+                }
+
+                // run insert in DB
+                db.SaveChanges();
+
+                // redirect to the updated students page
+                Response.Redirect("~/Default.aspx");
             }
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
+        }
+
+        protected void DropDownCheck(object sender, EventArgs e)
+        {
+            if (TeamOneDropDown.SelectedValue == TeamTwoDropDown.SelectedValue)
+            {
+                errorMessage.Text = "Team one and two cannot be the same team! Please choose 2 different teams!";
+                SaveButton.Enabled = false;
+            }
+            else
+            {
+                SaveButton.Enabled = true;
+            }
         }
     }
 }
