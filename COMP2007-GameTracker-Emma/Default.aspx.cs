@@ -13,6 +13,10 @@ namespace COMP2007_GameTracker_Emma
 {
     public partial class Default : System.Web.UI.Page
     {
+        /**
+         * Load some variables in globally to be used numerous times
+         */
+
         SqlConnection db = new SqlConnection("user id = EmmaH; data source = comp2007emma.database.windows.net; initial catalog = comp2007emma; persist security info = True; user id = EmmaH; password = Emma1031");
         SqlDataReader reader;
         DataTable gamesData = new DataTable();
@@ -28,9 +32,17 @@ namespace COMP2007_GameTracker_Emma
             }
         }
 
+        /**
+         * <summary>
+         * This function will get the games from the database and bind them to the gridview
+         * </summary>
+         * 
+         * @method GetGames
+         * @returns {void}
+         */
         protected void GetGames()
         {
-            
+
             int weekNum = 24;
             bool loggedIn = true;
 
@@ -63,7 +75,7 @@ namespace COMP2007_GameTracker_Emma
                     getTeamNames.Parameters.AddWithValue("@ID", row["TeamOneID"].ToString());
                     db.Open();
                     reader = getTeamNames.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         row["TeamOne"] = (String)reader["TeamName"];
                     }
@@ -91,7 +103,7 @@ namespace COMP2007_GameTracker_Emma
                 {
                     row["GameWinner"] = "";
                 }
-                else if(Int32.Parse(row["Winner"].ToString()) == 5)
+                else if (Int32.Parse(row["Winner"].ToString()) == 5)
                 {
                     row["GameWinner"] = "Tie";
                 }
@@ -115,6 +127,14 @@ namespace COMP2007_GameTracker_Emma
 
         }
 
+        /**
+         * <summary>
+         * This function will get the teams from the database, as well as the applicable data (scores) from the database and bind the data to the gridview
+         * </summary>
+         * 
+         * @method GetTeams
+         * @returns {void}
+         */
         protected void GetTeams()
         {
             SqlCommand getTeams = new SqlCommand("SELECT * FROM TeamTable", db);
@@ -151,7 +171,7 @@ namespace COMP2007_GameTracker_Emma
                             teamsRow["GameFourScores"] = "N/A";
                         }
                     }
-                    else if(teamsRow["TeamID"].ToString() == gameRow["TeamOneID"].ToString())
+                    else if (teamsRow["TeamID"].ToString() == gameRow["TeamOneID"].ToString())
                     {
                         if (gameRow["GameNum"].ToString() == "Game #1")
                         {
@@ -195,10 +215,17 @@ namespace COMP2007_GameTracker_Emma
             TeamsGridView.DataSource = teamsData.DefaultView;
             TeamsGridView.DataBind();
         }
-
+        /**
+         * <summary>
+         * This function will populate the weeks table with 52 weeks (1 for each of the year)
+         * </summary>
+         * 
+         * @method GetWeeks
+         * @returns {void}
+         */
         protected void GetWeeks()
         {
-            for(int week = 1; week <= 52; week++)
+            for (int week = 1; week <= 52; week++)
             {
                 ListItem newWeek = new ListItem(week.ToString(), week.ToString());
                 WeekDropDown.Items.Add(newWeek);

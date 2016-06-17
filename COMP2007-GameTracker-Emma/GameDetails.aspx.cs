@@ -28,6 +28,14 @@ namespace COMP2007_GameTracker_Emma
 
         }
 
+        /**
+         * <summary>
+         * This event handler fills the teams dropdowns with the teams in the database
+         * </summary>
+         * 
+         * @method FillDropdowns
+         * @returns {void}
+         */
         protected void FillDropdowns()
         {
             SqlDataAdapter adpt = new SqlDataAdapter("SELECT TeamID, TeamName FROM TeamTable", db);
@@ -45,6 +53,14 @@ namespace COMP2007_GameTracker_Emma
             TeamTwoDropDown.DataBind();
         }
 
+        /**
+         * <summary>
+         * This event handler grabs the data for the game being edited and displays it on the page
+         * </summary>
+         * 
+         * @method GetGame
+         * @returns {void}
+         */
         protected void GetGame()
         {
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
@@ -68,6 +84,16 @@ namespace COMP2007_GameTracker_Emma
             }
         }
 
+        /**
+         * <summary>
+         * This event handler saves the updated game data to the database, updating the game's previous data
+         * </summary>
+         * 
+         * @method SaveButton_Click
+         * @param {object} sender
+         * @param {EventArgs} e
+         * @returns {void}
+         */
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
@@ -110,11 +136,32 @@ namespace COMP2007_GameTracker_Emma
             }
         }
 
+        /**
+         * <summary>
+         * This event handler returns the user to the main page if they cancel editing
+         * </summary>
+         * 
+         * @method CancelButton_Click
+         * @param {object} sender
+         * @param {EventArgs} e
+         * @returns {void}
+         */
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
         }
 
+        /**
+         * <summary>
+         * This event handler adds or removes a warning and enables or disables the save button based on if the user has 
+         * selected two different teams (as required) or not
+         * </summary>
+         * 
+         * @method DropDownCheck
+         * @param {object} sender
+         * @param {EventArgs} e
+         * @returns {void}
+         */
         protected void DropDownCheck(object sender, EventArgs e)
         {
             if (TeamOneDropDown.SelectedValue == TeamTwoDropDown.SelectedValue)

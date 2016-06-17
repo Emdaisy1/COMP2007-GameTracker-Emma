@@ -1,6 +1,6 @@
 ﻿<%--Author: Emma Hilborn - 200282755
 Date: June 6, 2016
-Version: 1.0.0
+Version: 1.5.0
 Description: Main page which will display game stats AND team stats to user - logged in users will also be given an option to edit any of the 4 games--%>
 
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="COMP2007_GameTracker_Emma.Default" %>
@@ -9,7 +9,8 @@ Description: Main page which will display game stats AND team stats to user - lo
     <div class="mainTitle">
         <h1>
             <img src="Images/logo.png" alt="Logo" />
-            Game for the Top</h1>
+            Game for the Top
+        </h1>
     </div>
     <div class="subTitle">
         <h2>Volleyball Games this Week</h2>

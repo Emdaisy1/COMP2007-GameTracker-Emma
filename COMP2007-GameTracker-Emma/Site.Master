@@ -1,6 +1,6 @@
 ﻿<%--Author: Emma Hilborn - 200282755
 Date: June 6, 2016
-Version: 1.0.0
+Version: 1.5.0
 Description: Master page for the website pages, running the nav bar and the footer--%>
 
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COMP2007_GameTracker_Emma.Site" %>

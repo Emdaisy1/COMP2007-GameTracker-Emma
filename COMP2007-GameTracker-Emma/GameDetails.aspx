@@ -1,8 +1,14 @@
-﻿<%@ Page Title="GameDetails" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameDetails.aspx.cs" Inherits="COMP2007_GameTracker_Emma.GameDetails" %>
+﻿<%--Author: Emma Hilborn - 200282755
+Date: June 15, 2016
+Version: 1.5.0
+Description: Loads the page to allow the user to edit a game--%>
+
+<%@ Page Title="GameDetails" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameDetails.aspx.cs" Inherits="COMP2007_GameTracker_Emma.GameDetails" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col col-md-8 col-md-offset-2">
         <div class="mainTitle">
+            <img src="Images/logo.png" alt="Logo" />
             <h1>Game for the Top</h1>
         </div>
         <div class="subTitle">
