@@ -19,6 +19,7 @@ Description: Main page which will display game stats AND team stats to user - lo
         <div class="form-group">
             <label class="control-label" for="WeekDropDown">Select a week to view: </label>
             <asp:DropDownList ID="WeekDropDown" runat="server"></asp:DropDownList>
+            <%--<asp:Button Text="View Week" ID="WeekButton" runat="server" CssClass="btn btn-primary" OnClick="WeekButton_Click" />--%>
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading">Games</div>

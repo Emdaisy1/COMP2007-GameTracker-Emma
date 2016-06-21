@@ -14,6 +14,7 @@ Description: A registration page allowing new users to register for an account -
         <div class="subTitle">
             <h2>Register</h2>
         </div>
+        <br />
         <div class="panel panel-warning">
             <div class="panel-heading">Registration Form</div>
             <div class="panel-body">

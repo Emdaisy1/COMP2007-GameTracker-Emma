@@ -75,6 +75,7 @@ namespace COMP2007_GameTracker_Emma
                 //Map student properties to form controls
                 if (updatedGame != null)
                 {
+                    DescriptionTextBox.Text = updatedGame.Description.ToString();
                     TeamOneDropDown.SelectedValue = updatedGame.TeamOneID.ToString();
                     TeamTwoDropDown.SelectedValue = updatedGame.TeamTwoID.ToString();
                     TeamOnePointsTextBox.Text = updatedGame.TeamOnePoints.ToString();

@@ -8,6 +8,9 @@ using System.Data;
 using COMP2007_GameTracker_Emma.Models;
 using System.Web.ModelBinding;
 using System.Data.SqlClient;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 
 namespace COMP2007_GameTracker_Emma
 {
@@ -26,9 +29,22 @@ namespace COMP2007_GameTracker_Emma
         {
             if (!IsPostBack)
             {
+                this.showOrHideEdit();
                 this.GetGames();
                 this.GetTeams();
                 this.GetWeeks();
+            }
+        }
+
+        protected void showOrHideEdit()
+        {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                this.GamesGridView.Columns[8].Visible = true;
+            }
+            else
+            {
+                this.GamesGridView.Columns[8].Visible = false;
             }
         }
 
@@ -44,7 +60,6 @@ namespace COMP2007_GameTracker_Emma
         {
 
             int weekNum = 24;
-            bool loggedIn = true;
 
             SqlCommand getGames = new SqlCommand("SELECT *, (TeamOnePoints+TeamTwoPoints) AS TotalPoints FROM GamesTable WHERE Week = @Week", db);
             getGames.Parameters.AddWithValue("@Week", weekNum);
@@ -230,6 +245,11 @@ namespace COMP2007_GameTracker_Emma
                 ListItem newWeek = new ListItem(week.ToString(), week.ToString());
                 WeekDropDown.Items.Add(newWeek);
             }
+        }
+
+        protected void WeekButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

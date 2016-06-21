@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 
 /*
  * @Author: Emma Hilborn - 200282755
@@ -15,7 +18,21 @@ namespace COMP2007_GameTracker_Emma
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetActivePage();
+            if (!IsPostBack)
+            {
+                //Check if a user is logged in and display the right navbar areas based on that
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    RegisteredUser.Visible = true;
+                    PublicUser.Visible = false;
+                }
+                else
+                {
+                    RegisteredUser.Visible = false;
+                    PublicUser.Visible = true;
+                }
+                SetActivePage();
+            }
         }
 
 
