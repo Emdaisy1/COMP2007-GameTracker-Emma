@@ -5,7 +5,7 @@ Description: Master page for the website pages, running the nav bar and the foot
 
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COMP2007_GameTracker_Emma.Site" %>
 
-<%@ Register Src="~/User_Controls/NavbarLoggedIn.ascx" TagName="NavbarLoggedIn" TagPrefix="nav" %>
+<%@ Register Src="~/User_Controls/Navbar.ascx" TagName="Nav" TagPrefix="nav" %>
 <%@ Register Src="~/User_Controls/GeneralNav.ascx" TagName="GenNav" TagPrefix="nav" %>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ Description: Master page for the website pages, running the nav bar and the foot
     <form id="form1" runat="server">
 
         <%--    Will run one navbar if user is NOT logged in, another if they are --%>
-        <nav:NavbarLoggedIn runat="server"></nav:NavbarLoggedIn>
+        <nav:Nav runat="server"></nav:Nav>
         <%-- <nav:GenNav runat="server"></nav:GenNav> --%>
 
         <div>

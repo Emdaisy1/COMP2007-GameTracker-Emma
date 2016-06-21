@@ -33,6 +33,15 @@ namespace COMP2007_GameTracker_Emma
                 case "Home Page":
                     home.Attributes.Add("class", "active");
                     break;
+                case "Login":
+                    login.Attributes.Add("class", "active");
+                    break;
+                case "Register":
+                    register.Attributes.Add("class", "active");
+                    break;
+                case "Profile":
+                    profile.Attributes.Add("class", "active");
+                    break;
             }
         }
     }

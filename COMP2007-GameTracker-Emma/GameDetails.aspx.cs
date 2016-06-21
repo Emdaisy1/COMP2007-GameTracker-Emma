@@ -65,7 +65,7 @@ namespace COMP2007_GameTracker_Emma
         {
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
 
-            using (DefaultConnection db = new DefaultConnection())
+            using (GamesConnection db = new GamesConnection())
             {
                 //Populate student object instance with Student ID from URL parameter
                 GamesTable updatedGame = (from game in db.GamesTables
@@ -98,7 +98,7 @@ namespace COMP2007_GameTracker_Emma
         {
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
 
-            using (DefaultConnection db = new DefaultConnection())
+            using (GamesConnection db = new GamesConnection())
             {
                 // use the student model to save a new record
                 GamesTable updatedGameSave = new GamesTable();

@@ -13,10 +13,10 @@ namespace COMP2007_GameTracker_Emma.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DefaultConnection : DbContext
+    public partial class GamesConnection : DbContext
     {
-        public DefaultConnection()
-            : base("name=DefaultConnection")
+        public GamesConnection()
+            : base("name=GamesConnection")
         {
         }
     

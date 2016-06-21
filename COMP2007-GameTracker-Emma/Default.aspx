@@ -8,7 +8,7 @@ Description: Main page which will display game stats AND team stats to user - lo
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="mainTitle">
         <h1>
-            <img src="Images/logo.png" alt="Logo" />
+            <img src="/Assets/Images/logo.png" alt="Logo" />
             Game for the Top
         </h1>
     </div>

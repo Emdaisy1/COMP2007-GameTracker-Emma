@@ -8,7 +8,7 @@ Description: Loads the page to allow the user to edit a game--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col col-md-8 col-md-offset-2">
         <div class="mainTitle">
-            <img src="Images/logo.png" alt="Logo" />
+            <img src="/Assets/Images/logo.png" alt="Logo" />
             <h1>Game for the Top</h1>
         </div>
         <div class="subTitle">
