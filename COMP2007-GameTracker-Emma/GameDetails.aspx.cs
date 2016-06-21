@@ -133,7 +133,7 @@ namespace COMP2007_GameTracker_Emma
                 db.SaveChanges();
 
                 // redirect to the updated students page
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Default.aspx?week=" + updatedGameSave.Week);
             }
         }
 

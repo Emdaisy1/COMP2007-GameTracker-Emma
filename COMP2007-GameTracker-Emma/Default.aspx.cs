@@ -25,7 +25,7 @@ namespace COMP2007_GameTracker_Emma
         DataTable gamesData = new DataTable();
         DataTable teamsData = new DataTable();
 
-        int weekNum = 1;
+        int weekNum;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,12 +33,14 @@ namespace COMP2007_GameTracker_Emma
             {
                 this.showOrHideEdit();
                 this.GetWeeks();
+                this.CheckWeek();
                 this.GetGames();
                 this.GetTeams();
             }
             if (IsPostBack)
             {
                 weekNum = Convert.ToInt32(WeekDropDown.SelectedValue);
+                this.FillIfEmpty();
                 this.GetGames();
                 this.GetTeams();
             }
@@ -250,6 +252,43 @@ namespace COMP2007_GameTracker_Emma
             {
                 ListItem newWeek = new ListItem(week.ToString(), week.ToString());
                 WeekDropDown.Items.Add(newWeek);
+            }
+        }
+
+        protected void FillIfEmpty()
+        {
+            //Get game data for that week
+            DataTable tempData = new DataTable();
+            SqlCommand checkGames = new SqlCommand("SELECT *, (TeamOnePoints+TeamTwoPoints) AS TotalPoints FROM GamesTable WHERE Week = @Week", db);
+            checkGames.Parameters.AddWithValue("@Week", weekNum);
+            db.Open();
+            reader = checkGames.ExecuteReader();
+            tempData.Load(reader);
+            db.Close();
+
+            if(tempData.Rows.Count == 0)
+            {
+                SqlCommand fillWeek = new SqlCommand("INSERT INTO GamesTable (Week) VALUES (@week)", db);
+                fillWeek.Parameters.AddWithValue("@week", weekNum);
+                db.Open();
+                for(int i=1; i < 5; i++)
+                {
+                    fillWeek.ExecuteNonQuery();
+                }
+                db.Close();
+            }
+        }
+
+        protected void CheckWeek()
+        {
+            if(Request.QueryString.Count > 0)
+            {
+                weekNum = Convert.ToInt32(Request.QueryString["week"]);
+                WeekDropDown.SelectedValue.Equals(weekNum);
+            }
+            else
+            {
+                weekNum = 1;
             }
         }
     }
