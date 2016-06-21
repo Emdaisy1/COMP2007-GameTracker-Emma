@@ -25,15 +25,24 @@ namespace COMP2007_GameTracker_Emma
         DataTable gamesData = new DataTable();
         DataTable teamsData = new DataTable();
 
+        int weekNum = 1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 this.showOrHideEdit();
+                this.GetWeeks();
                 this.GetGames();
                 this.GetTeams();
-                this.GetWeeks();
             }
+            if (IsPostBack)
+            {
+                weekNum = Convert.ToInt32(WeekDropDown.SelectedValue);
+                this.GetGames();
+                this.GetTeams();
+            }
+
         }
 
         protected void showOrHideEdit()
@@ -58,9 +67,6 @@ namespace COMP2007_GameTracker_Emma
          */
         protected void GetGames()
         {
-
-            int weekNum = 24;
-
             SqlCommand getGames = new SqlCommand("SELECT *, (TeamOnePoints+TeamTwoPoints) AS TotalPoints FROM GamesTable WHERE Week = @Week", db);
             getGames.Parameters.AddWithValue("@Week", weekNum);
             db.Open();
@@ -245,11 +251,6 @@ namespace COMP2007_GameTracker_Emma
                 ListItem newWeek = new ListItem(week.ToString(), week.ToString());
                 WeekDropDown.Items.Add(newWeek);
             }
-        }
-
-        protected void WeekButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
