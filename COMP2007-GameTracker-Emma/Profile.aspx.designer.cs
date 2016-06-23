@@ -13,13 +13,13 @@ namespace COMP2007_GameTracker_Emma {
     public partial class Profile {
         
         /// <summary>
-        /// registerErrorMessage control.
+        /// updateErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label registerErrorMessage;
+        protected global::System.Web.UI.WebControls.Label updateErrorMessage;
         
         /// <summary>
         /// userNameTextBox control.

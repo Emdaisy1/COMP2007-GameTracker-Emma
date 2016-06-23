@@ -21,7 +21,7 @@ Description: Profile page which will allow a user who is logged in to edit their
             <div class="panel-body">
                 <h6>All Fields are Required</h6>
                 <br />
-                <asp:Label runat="server" ID="registerErrorMessage" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
+                <asp:Label runat="server" ID="updateErrorMessage" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
                 <div class="form-group">
                     <label class="control-label" for="userNameTextBox">Username:</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="userNameTextBox" placeholder="Username" required="true" TabIndex="0"></asp:TextBox>

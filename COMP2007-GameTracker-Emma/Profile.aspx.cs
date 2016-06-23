@@ -19,7 +19,10 @@ namespace COMP2007_GameTracker_Emma
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.GetUser();
+            if (!IsPostBack)
+            {
+                this.GetUser();
+            }
         }
 
         protected void GetUser()
@@ -54,9 +57,16 @@ namespace COMP2007_GameTracker_Emma
                 updatedUser.UserName = userNameTextBox.Text;
                 updatedUser.Email = emailTextBox.Text;
 
-                db.SaveChanges();
-
-                Response.Redirect("~/Default.aspx");
+                try
+                {
+                    db.SaveChanges();
+                    Response.Redirect("~/Default.aspx");
+                }
+                catch
+                {
+                    updateErrorMessage.Text = "The username you tried to update to is already taken! Please try again.";
+                    updateErrorMessage.Visible = true;
+                }
             }
 
         }
