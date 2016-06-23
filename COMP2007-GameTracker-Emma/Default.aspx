@@ -13,13 +13,12 @@ Description: Main page which will display game stats AND team stats to user - lo
         </h1>
     </div>
     <div class="subTitle">
-        <h2>Volleyball Games this Week</h2>
+        <h2>Volleyball Games - Week <asp:Label runat="server" ID="showWeekLabel" Text=""></asp:Label></h2>
     </div>
     <div class="col col-md-8 col-md-offset-2">
         <div class="form-group">
             <label class="control-label" for="WeekDropDown">Select a week to view: </label>
             <asp:DropDownList ID="WeekDropDown" runat="server" AutoPostBack="true"></asp:DropDownList>
-            <%--<asp:Button Text="View Week" ID="WeekButton" runat="server" CssClass="btn btn-primary" OnClick="WeekButton_Click" />--%>
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading">Games</div>

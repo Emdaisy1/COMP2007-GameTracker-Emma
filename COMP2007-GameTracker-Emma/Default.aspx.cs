@@ -17,7 +17,7 @@ namespace COMP2007_GameTracker_Emma
     public partial class Default : System.Web.UI.Page
     {
         /**
-         * Load some variables in globally to be used numerous times
+         * Load some variables in globally to be used numerous times across multiple methods
          */
 
         SqlConnection db = new SqlConnection("user id = EmmaH; data source = comp2007emma.database.windows.net; initial catalog = comp2007emma; persist security info = True; user id = EmmaH; password = Emma1031");
@@ -34,12 +34,14 @@ namespace COMP2007_GameTracker_Emma
                 this.showOrHideEdit();
                 this.GetWeeks();
                 this.CheckWeek();
+                this.showWeek();
                 this.GetGames();
                 this.GetTeams();
             }
             if (IsPostBack)
             {
                 weekNum = Convert.ToInt32(WeekDropDown.SelectedValue);
+                this.showWeek();
                 this.FillIfEmpty();
                 this.GetGames();
                 this.GetTeams();
@@ -47,6 +49,14 @@ namespace COMP2007_GameTracker_Emma
 
         }
 
+        /**
+         * <summary>
+         * This function will show or hide the "edit" column of the table depending on if the user is public or logged in
+         * </summary>
+         * 
+         * @method showOrHideEdit
+         * @returns {void}
+         */
         protected void showOrHideEdit()
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
@@ -69,6 +79,8 @@ namespace COMP2007_GameTracker_Emma
          */
         protected void GetGames()
         {
+            //Opens the DB and gets all the data from the games table for that week.
+            //It also includes a column TotalPoints as the sum of the points entered for teams one and two.
             SqlCommand getGames = new SqlCommand("SELECT *, (TeamOnePoints+TeamTwoPoints) AS TotalPoints FROM GamesTable WHERE Week = @Week", db);
             getGames.Parameters.AddWithValue("@Week", weekNum);
             db.Open();
@@ -88,6 +100,8 @@ namespace COMP2007_GameTracker_Emma
                 row["GameNum"] = "Game #" + gameNum;
                 gameNum++;
 
+                //This set of if/else statements will print a blank if there is no team (e.g. new game),
+                //or will get the team name from the teams table using the team id (e.g. game that has been edited to include data).
                 if (Int32.Parse(row["TeamOneID"].ToString()) == 0)
                 {
                     row["TeamOne"] = "";
@@ -122,6 +136,8 @@ namespace COMP2007_GameTracker_Emma
                     db.Close();
                 }
 
+                //This if/elseif/else statment will print a blank for new/empty games,
+                //the winning team for wins, or "tie" where a game was tied
                 if (Int32.Parse(row["Winner"].ToString()) == 0)
                 {
                     row["GameWinner"] = "";
@@ -160,6 +176,7 @@ namespace COMP2007_GameTracker_Emma
          */
         protected void GetTeams()
         {
+            //Opens the DB and gets all data from the teams table
             SqlCommand getTeams = new SqlCommand("SELECT * FROM TeamTable", db);
             db.Open();
             reader = getTeams.ExecuteReader();
@@ -171,6 +188,10 @@ namespace COMP2007_GameTracker_Emma
             teamsData.Columns.Add(new DataColumn("GameThreeScores", typeof(string)));
             teamsData.Columns.Add(new DataColumn("GameFourScores", typeof(string)));
 
+            //This set of loops will loop through each row in the data table holding the teams information,
+            //checking for that team in each game that occured that week. It will then post N/A for games where
+            //that team did not participate, or will post the number of points won & lost by that team 
+            //for all games they participated in that week.
             foreach (DataRow teamsRow in teamsData.Rows)
             {
                 foreach (DataRow gameRow in gamesData.Rows)
@@ -238,6 +259,7 @@ namespace COMP2007_GameTracker_Emma
             TeamsGridView.DataSource = teamsData.DefaultView;
             TeamsGridView.DataBind();
         }
+
         /**
          * <summary>
          * This function will populate the weeks table with 52 weeks (1 for each of the year)
@@ -255,6 +277,14 @@ namespace COMP2007_GameTracker_Emma
             }
         }
 
+        /**
+         * <summary>
+         * This function will populate the database with the 4 empty games for that week, if it has not been populated before
+         * </summary>
+         * 
+         * @method FillIfEmpty
+         * @returns {void}
+         */
         protected void FillIfEmpty()
         {
             //Get game data for that week
@@ -279,6 +309,14 @@ namespace COMP2007_GameTracker_Emma
             }
         }
 
+        /**
+         * <summary>
+         * This function will check to see what week is to be displayed
+         * </summary>
+         * 
+         * @method CheckWeek
+         * @returns {void}
+         */
         protected void CheckWeek()
         {
             if(Request.QueryString.Count > 0)
@@ -290,6 +328,19 @@ namespace COMP2007_GameTracker_Emma
             {
                 weekNum = 1;
             }
+        }
+
+        /**
+         * <summary>
+         * This function will update the week number in the page subtitle
+         * </summary>
+         * 
+         * @method showWeek
+         * @returns {void}
+         */
+        protected void showWeek()
+        {
+            showWeekLabel.Text = weekNum.ToString();
         }
     }
 }

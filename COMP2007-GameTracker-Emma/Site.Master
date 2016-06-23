@@ -6,7 +6,6 @@ Description: Master page for the website pages, running the nav bar and the foot
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COMP2007_GameTracker_Emma.Site" %>
 
 <%@ Register Src="~/User_Controls/Navbar.ascx" TagName="Nav" TagPrefix="nav" %>
-<%@ Register Src="~/User_Controls/GeneralNav.ascx" TagName="GenNav" TagPrefix="nav" %>
 
 <!DOCTYPE html>
 
@@ -30,16 +29,17 @@ Description: Master page for the website pages, running the nav bar and the foot
 </head>
 <body>
     <form id="form1" runat="server">
-
-        <%--    Will run one navbar if user is NOT logged in, another if they are --%>
+        <!-- Nav bar from user controls -->
         <nav:Nav runat="server"></nav:Nav>
-        <%-- <nav:GenNav runat="server"></nav:GenNav> --%>
 
+
+        <!-- Place holder for main content -->
         <div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
 
+        <!-- Footer -->
         <footer class="footer">
             <div class="container">
                 <p class="text-muted">&copy; Game for the Top</p>

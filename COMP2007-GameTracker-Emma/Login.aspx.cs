@@ -18,6 +18,17 @@ namespace COMP2007_GameTracker_Emma
 
         }
 
+        /**
+         * <summary>
+         * This event handler attempts to log the user in, showing an error message if it fails
+         * or logging them in to the main games page if it succeeds
+         * </summary>
+         * 
+         * @method RegisterButton_Click
+         * @param {object} sender
+         * @param {EventArgs} e
+         * @returns {void}
+         */
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             var userStore = new UserStore<IdentityUser>();
@@ -38,6 +49,17 @@ namespace COMP2007_GameTracker_Emma
             }
         }
 
+
+        /**
+         * <summary>
+         * This event handler redirects the user to the main games page if they cancel logging in
+         * </summary>
+         * 
+         * @method CancelButton_Click
+         * @param {object} sender
+         * @param {EventArgs} e
+         * @returns {void}
+         */
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");

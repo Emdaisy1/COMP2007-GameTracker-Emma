@@ -25,11 +25,14 @@ namespace COMP2007_GameTracker_Emma
                 {
                     RegisteredUser.Visible = true;
                     PublicUser.Visible = false;
+                    greeting.InnerText = "Welcome, " + HttpContext.Current.User.Identity.GetUserName() + "!";
+                    GreetUser.Visible = true;
                 }
                 else
                 {
                     RegisteredUser.Visible = false;
                     PublicUser.Visible = true;
+                    GreetUser.Visible = false;
                 }
                 SetActivePage();
             }

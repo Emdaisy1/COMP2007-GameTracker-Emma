@@ -13,6 +13,24 @@ namespace COMP2007_GameTracker_Emma {
     public partial class Navbar {
         
         /// <summary>
+        /// GreetUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder GreetUser;
+        
+        /// <summary>
+        /// greeting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl greeting;
+        
+        /// <summary>
         /// home control.
         /// </summary>
         /// <remarks>
