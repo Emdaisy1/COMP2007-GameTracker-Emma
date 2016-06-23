@@ -284,7 +284,7 @@ namespace COMP2007_GameTracker_Emma
             if(Request.QueryString.Count > 0)
             {
                 weekNum = Convert.ToInt32(Request.QueryString["week"]);
-                WeekDropDown.SelectedValue.Equals(weekNum);
+                WeekDropDown.SelectedValue= weekNum.ToString();
             }
             else
             {

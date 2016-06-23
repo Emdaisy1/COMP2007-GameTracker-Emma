@@ -8,8 +8,10 @@ Description: A login page to allow registered users to log in --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col col-md-8 col-md-offset-2">
         <div class="mainTitle">
-            <img src="/Assets/Images/logo.png" alt="Logo" />
-            <h1>Game for the Top</h1>
+            <h1>
+                <img src="/Assets/Images/logo.png" alt="Logo" />
+                Game for the Top
+            </h1>
         </div>
         <div class="subTitle">
             <h2>Login</h2>

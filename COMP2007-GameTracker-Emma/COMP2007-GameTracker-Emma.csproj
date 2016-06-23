@@ -140,6 +140,16 @@
       <DependentUpon>GameTrackerModel.edmx</DependentUpon>
       <LastGenOutput>GameTrackerModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\UserModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+      <LastGenOutput>UserModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModel.edmx</DependentUpon>
+      <LastGenOutput>UserModel.cs</LastGenOutput>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
@@ -151,6 +161,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\UserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserModel.edmx.diagram">
+      <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -186,7 +203,9 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
@@ -217,6 +236,18 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GamesTable.cs">
       <DependentUpon>GameTrackerModel.tt</DependentUpon>
     </Compile>
@@ -237,6 +268,21 @@
     </Compile>
     <Compile Include="Models\TeamTable.cs">
       <DependentUpon>GameTrackerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

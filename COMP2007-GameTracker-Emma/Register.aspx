@@ -8,8 +8,10 @@ Description: A registration page allowing new users to register for an account -
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col col-md-8 col-md-offset-2">
         <div class="mainTitle">
-            <img src="/Assets/Images/logo.png" alt="Logo" />
-            <h1>Game for the Top</h1>
+            <h1>
+                <img src="/Assets/Images/logo.png" alt="Logo" />
+                Game for the Top
+            </h1>
         </div>
         <div class="subTitle">
             <h2>Register</h2>
@@ -37,7 +39,7 @@ Description: A registration page allowing new users to register for an account -
                     <label class="control-label" for="ConfirmPasswordTextBox">Confirm:</label>
                     <asp:TextBox runat="server" TextMode="Password" CssClass="form-control" ID="ConfirmPasswordTextBox" placeholder="Confirm Password" required="true" TabIndex="0"></asp:TextBox>
                     <asp:CompareValidator ErrorMessage="Your Passwords Must Match" Type="String" Operator="Equal" ControlToValidate="ConfirmPasswordTextBox" runat="server"
-                       ControlToCompare="PasswordTextBox" CssClass="label label-danger" />
+                        ControlToCompare="PasswordTextBox" CssClass="label label-danger" />
                 </div>
                 <div class="text-right">
                     <asp:Button Text="Cancel" ID="CancelButton" runat="server" CssClass="btn btn-warning" OnClick="CancelButton_Click" UseSubmitBehavior="false" CausesValidation="false" TabIndex="0" />
