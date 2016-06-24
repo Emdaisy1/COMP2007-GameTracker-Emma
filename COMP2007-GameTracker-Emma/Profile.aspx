@@ -16,7 +16,7 @@ Description: Profile page which will allow a user who is logged in to edit their
         <h2>Edit Your Profile</h2>
     </div>
     <div class="col col-md-8 col-md-offset-2">
-        <div class="panel panel-warning">
+        <div class="panel panel-warning col col-md-4 col-md-offset-4">
             <div class="panel-heading">Profile Details</div>
             <div class="panel-body">
                 <h6>All Fields are Required</h6>
