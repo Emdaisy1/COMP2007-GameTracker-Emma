@@ -195,7 +195,6 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="User_Controls\GeneralNav.ascx" />
     <Content Include="User_Controls\Navbar.ascx" />
     <Content Include="Scripts\app.js" />
     <Content Include="fonts\FontAwesome.otf" />
@@ -299,13 +298,6 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="User_Controls\GeneralNav.ascx.cs">
-      <DependentUpon>GeneralNav.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="User_Controls\GeneralNav.ascx.designer.cs">
-      <DependentUpon>GeneralNav.ascx</DependentUpon>
-    </Compile>
     <Compile Include="User_Controls\Navbar.ascx.cs">
       <DependentUpon>Navbar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

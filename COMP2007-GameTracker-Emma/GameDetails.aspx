@@ -1,6 +1,6 @@
 ﻿<%--Author: Emma Hilborn - 200282755
 Date: June 15, 2016
-Version: 1.5.0
+Version: 2.0.0
 Description: Loads the page to allow the user to edit a game--%>
 
 <%@ Page Title="GameDetails" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GameDetails.aspx.cs" Inherits="COMP2007_GameTracker_Emma.GameDetails" %>

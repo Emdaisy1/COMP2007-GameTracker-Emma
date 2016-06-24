@@ -1,6 +1,6 @@
 ﻿<%--Author: Emma Hilborn - 200282755
 Date: June 6, 2016
-Version: 1.5.0
+Version: 2.0.0
 Description: User control for the nav bar that will be shown to users who are logged in--%>
 
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navbar.ascx.cs" Inherits="COMP2007_GameTracker_Emma.Navbar" %>

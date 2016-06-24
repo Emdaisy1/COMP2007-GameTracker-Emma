@@ -36,6 +36,7 @@ namespace COMP2007_GameTracker_Emma
                 }
                 SetActivePage();
             }
+
         }
 
 
