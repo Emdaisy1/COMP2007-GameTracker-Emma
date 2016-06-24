@@ -17,7 +17,7 @@ Description: A registration page allowing new users to register for an account -
             <h2>Register</h2>
         </div>
         <br />
-        <div class="panel panel-warning">
+        <div class="panel panel-warning col col-md-4 col-md-offset-4">
             <div class="panel-heading">Registration Form</div>
             <div class="panel-body">
                 <h6>All Fields are Required</h6>

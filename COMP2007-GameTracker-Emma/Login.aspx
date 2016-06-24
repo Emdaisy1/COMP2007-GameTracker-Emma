@@ -17,7 +17,7 @@ Description: A login page to allow registered users to log in --%>
             <h2>Login</h2>
         </div>
         <br />
-        <div class="panel panel-warning">
+        <div class="panel panel-warning col col-md-4 col-md-offset-4">
             <div class="panel-heading">Login Form</div>
             <div class="panel-body">
                 <asp:Label runat="server" ID="loginErrorMessage" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
